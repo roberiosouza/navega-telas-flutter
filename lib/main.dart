@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navega_telas/tela-secundaria.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -16,6 +17,26 @@ class TelaPrincipal extends StatefulWidget {
 class _TelaPrincipalState extends State<TelaPrincipal> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Tela Principal"),
+        backgroundColor: Colors.orange,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(32),
+        child: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TelaSecundaria()));
+                },
+                child: Text("Ir para segunda tela"))
+          ],
+        ),
+      ),
+    );
   }
 }
