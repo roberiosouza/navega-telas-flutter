@@ -15,6 +15,8 @@ class TelaPrincipal extends StatefulWidget {
 }
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
+  TextEditingController _inputNome = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +35,29 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                       MaterialPageRoute(
                           builder: (context) => TelaSecundaria()));
                 },
-                child: Text("Ir para segunda tela"))
+                child: Text("Ir para segunda tela")),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: TextField(
+                keyboardType: TextInputType.text,
+                controller: _inputNome,
+                decoration: InputDecoration(
+                    labelText: "Digite um nome", hintText: "Qualquer nome"),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              TelaSecundaria(nome: _inputNome.text)));
+                },
+                child: Text("Enviar para outra Tela"),
+              ),
+            )
           ],
         ),
       ),
