@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:navega_telas/tela-secundaria.dart';
+import 'package:navega_telas/terceira-tela.dart';
 
 void main() {
   runApp(MaterialApp(
+    initialRoute: "/",
+    routes: {"/terceira-tela": (context) => TerceiraTela()},
     home: TelaPrincipal(),
   ));
 }
@@ -56,6 +59,15 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                               TelaSecundaria(nome: _inputNome.text)));
                 },
                 child: Text("Enviar para outra Tela"),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/terceira-tela");
+                },
+                child: Text("Terceira Tela Com Rotas Nomeadas"),
               ),
             )
           ],
